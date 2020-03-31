@@ -26,5 +26,7 @@ namespace Notepad0001.Properties
                 return defaultInstance;
             }
         }
+
+        public static bool IsStatusBarVisible { get; internal set; }
     }
 }

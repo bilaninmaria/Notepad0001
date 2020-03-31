@@ -1,4 +1,7 @@
-﻿namespace Notepad0001
+﻿using System;
+using System.Windows.Forms;
+
+namespace Notepad0001
 {
     partial class Form1
     {
@@ -86,6 +89,8 @@
             this.TextBox1.Name = "TextBox1";
             this.TextBox1.Size = new System.Drawing.Size(800, 426);
             this.TextBox1.TabIndex = 0;
+            this.TextBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
+            this.TextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox1_TextChanged);
             // 
             // MenuStrip
             // 
@@ -325,7 +330,9 @@
             // 
             // wordWrapToolStripMenuItem
             // 
+            this.wordWrapToolStripMenuItem.Checked = true;
             this.wordWrapToolStripMenuItem.CheckOnClick = true;
+            this.wordWrapToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.wordWrapToolStripMenuItem.Name = "wordWrapToolStripMenuItem";
             this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.wordWrapToolStripMenuItem.Text = "&Word Wrap";
@@ -348,6 +355,8 @@
             // 
             // statusBarToolStripMenuItem
             // 
+            this.statusBarToolStripMenuItem.CheckOnClick = true;
+            this.statusBarToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.Insert;
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
             this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.statusBarToolStripMenuItem.Text = "&Status Bar";
@@ -378,6 +387,7 @@
             // 
             // statusStrip
             // 
+            this.statusStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
             this.statusStrip.Location = new System.Drawing.Point(0, 428);
@@ -385,7 +395,6 @@
             this.statusStrip.Size = new System.Drawing.Size(800, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "statusStrip1";
-            this.statusStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip_ItemClicked);
             // 
             // toolStripStatusLabel1
             // 
@@ -413,7 +422,9 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.DefaultExt = "txt";
+            this.openFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            this.openFileDialog1.SupportMultiDottedExtensions = true;
             // 
             // Form1
             // 
@@ -423,6 +434,7 @@
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.TextBox1);
             this.Controls.Add(this.MenuStrip);
+            this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MenuStrip;
             this.Name = "Form1";
@@ -436,6 +448,11 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void TextBox1_Changed(object sender, KeyPressEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

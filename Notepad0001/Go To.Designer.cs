@@ -32,27 +32,19 @@ namespace Notepad0001
         private void InitializeComponent()
         {
             this.GoToLineNumber = new System.Windows.Forms.Label();
-            this.lineTextBox = new System.Windows.Forms.TextBox();
             this.buttonGoTo = new System.Windows.Forms.Button();
             this.buttonCancelGo = new System.Windows.Forms.Button();
+            this.lineTextBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // GoToLineNumber
             // 
             this.GoToLineNumber.AutoSize = true;
-            this.GoToLineNumber.Location = new System.Drawing.Point(30, 13);
+            this.GoToLineNumber.Location = new System.Drawing.Point(14, 13);
             this.GoToLineNumber.Name = "GoToLineNumber";
-            this.GoToLineNumber.Size = new System.Drawing.Size(67, 13);
+            this.GoToLineNumber.Size = new System.Drawing.Size(73, 13);
             this.GoToLineNumber.TabIndex = 0;
-            this.GoToLineNumber.Text = "Line Number";
-            // 
-            // lineTextBox
-            // 
-            this.lineTextBox.Location = new System.Drawing.Point(12, 39);
-            this.lineTextBox.Name = "lineTextBox";
-            this.lineTextBox.Size = new System.Drawing.Size(244, 20);
-            this.lineTextBox.TabIndex = 1;
-            this.lineTextBox.TextChanged += new System.EventHandler(this.lineTextBox_TextChanged);
+            this.GoToLineNumber.Text = "Line Number :";
             // 
             // buttonGoTo
             // 
@@ -74,14 +66,22 @@ namespace Notepad0001
             this.buttonCancelGo.UseVisualStyleBackColor = true;
             this.buttonCancelGo.Click += new System.EventHandler(this.buttonCancelGo_Click);
             // 
+            // lineTextBox1
+            // 
+            this.lineTextBox1.Location = new System.Drawing.Point(17, 48);
+            this.lineTextBox1.Name = "lineTextBox1";
+            this.lineTextBox1.Size = new System.Drawing.Size(211, 20);
+            this.lineTextBox1.TabIndex = 4;
+            this.lineTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lineTextBox1_KeyPress);
+            // 
             // GoToLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(268, 117);
+            this.Controls.Add(this.lineTextBox1);
             this.Controls.Add(this.buttonCancelGo);
             this.Controls.Add(this.buttonGoTo);
-            this.Controls.Add(this.lineTextBox);
             this.Controls.Add(this.GoToLineNumber);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.KeyPreview = true;
@@ -96,16 +96,12 @@ namespace Notepad0001
 
         }
 
-        private void lineTextBox_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
+  
         #endregion
 
         private System.Windows.Forms.Label GoToLineNumber;
-        private System.Windows.Forms.TextBox lineTextBox;
         private System.Windows.Forms.Button buttonGoTo;
         private System.Windows.Forms.Button buttonCancelGo;
+        private System.Windows.Forms.TextBox lineTextBox1;
     }
 }

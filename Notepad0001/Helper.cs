@@ -1,31 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Notepad0001
 {
-        public static class Helper
+    public static class HelperExtensions
+    {
+        public static string FormatUsingObject(this string @this, object poObject)
         {
-            public static List<int> GetIndexes(string pText, string pSearchText, bool pCaseSensitive)
+            var sFormatted = @this;
+
+            foreach (var oProperty in TypeDescriptor.GetProperties(poObject).Cast<PropertyDescriptor>())
             {
-                var Indexes = new List<int>();
-
-                var eStringComparison = pCaseSensitive ? StringComparison.CurrentCulture : StringComparison.CurrentCultureIgnoreCase;
-
-                var StartIndex = 0;
-
-                while (true)
-                {
-                    var Index = pText.IndexOf(pSearchText, StartIndex, eStringComparison);
-                    if (Index == -1) break;
-                    Indexes.Add(Index);
-                    StartIndex = Index + pSearchText.Length;
-                }
-
-                return Indexes;
+                sFormatted = sFormatted.Replace("{" + oProperty.Name + "}", oProperty.GetValue(poObject).ToStringOrNull());
             }
+
+            return sFormatted;
         }
-    
+
+        public static string ToStringOrNull(this object @this)
+        {
+            if (@this == null) return null;
+            return @this.ToString();
+        }
+
+        public static bool IsEmpty(this string @this)
+        {
+            return string.IsNullOrWhiteSpace(@this);
+        }
+    }
 }
+
+
